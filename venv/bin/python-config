@@ -1,4 +1,4 @@
-#!/Users/edwardkim/Documents/jupyter/hashtag/flask/venv/bin/python
+#!/Users/edwardkim/Documents/jupyter/hashtag/hashtag-flask/venv/bin/python
 
 import sys
 import getopt
