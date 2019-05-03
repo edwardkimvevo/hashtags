@@ -45,7 +45,8 @@ def results():
     df = pd.read_sql_query(query, conn)
 
     if df.empty:
-        searchquery
+        final_tags_list = ['Please enter vailid isrc or ytid']
+        hashtags = ['Please enter vailid isrc or ytid']
     else:
         permanent_keywords = ['Vevo', 'music video', 'music']
         artist_list = df['name']
