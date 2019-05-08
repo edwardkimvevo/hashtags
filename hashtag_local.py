@@ -11,14 +11,16 @@ import os
 app = Flask(__name__)
 
 
-#host = '172.31.8.52'
 host = 'vevoanalytics.cvw5tscfxqol.us-east-1.redshift.amazonaws.com'
 port = '5439'
-user = os.environ.get('REDSHIFT_USER')
-password = os.environ.get('REDSHIFT_PASSWORD')
+user = 'edward_kim'
+password = 'VivalaVevo!1'
 dbname = 'looker1'
 engine = create_engine(''.join(['postgresql://', user, ':', password, '@', host, ':', port, '/', dbname]))
 conn = None
+
+print(f'redshift user: {user}')
+print(f'redshift password: {password}')
 
 def connect_db():
     global conn
@@ -35,16 +37,18 @@ def close_db(error):
 '''
 
 
+
 @app.route('/')
 def index():
-
+    print('Inside index function')
     return render_template(
         'selection.html')
 
 @app.route('/results', methods=['GET', 'POST'])
 def results():
-
+    print('Inside results function')
     conn = connect_db()
+    print('Connected to db')
     
     searchtype=request.form.get('searchtype')
     searchquery = request.form.get('searchquery')
@@ -133,6 +137,6 @@ def results():
         hashtags = hashtags)
 
 if __name__=='__main__':
-    app.run(host='0.0.0.0', port=8888, debug=True)
+    app.run(host='0.0.0.0', port=8000, debug=True)
 
 
